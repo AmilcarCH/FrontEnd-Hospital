@@ -1,0 +1,83 @@
+<div class="row animated fadeIn">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Perfil de usuario</font>
+                    </font>
+                </h4>
+                <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Nombre de usuario</font>
+                    </font>
+                </h6>
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Nombre de
+                                    usuario</font>
+                            </font>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="ti-user"></i>
+                            </div>
+                            <input [ngModel]="usuario.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre de usuario" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Correo de usuario</font>
+                            </font>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="ti-email"></i>
+                            </div>
+                            <input [ngModel]="usuario.email" [disabled]="usuario.google" name="email" type="email" class="form-control" placeholder="Correo de usuario" required>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success waves-effect
+                        waves-light m-r-10">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;"></font>
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </font>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Fotografía del usuario</h4>
+                <h6 class="card-subtitle">:::::::::</h6>
+
+                <img *ngIf="!imagenTemp" [src]="usuario.img | images" class="w150">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+                <input (change)="seleccionImagen($event.target.files[0])" type="file">
+
+                <br><br>
+
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect
+                                        waves-light m-r-10">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;"></font>
+                        <i class="fa fa-save"></i>
+                        Actualizar foto
+                    </font>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
